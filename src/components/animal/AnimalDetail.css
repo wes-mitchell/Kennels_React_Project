@@ -1,0 +1,10 @@
+#root > .card {
+  max-width: 400px;
+  margin: 10px auto;
+}
+
+.dogPhoto {
+  width: 75%;
+  height: 25%;
+  justify-content: center;
+}

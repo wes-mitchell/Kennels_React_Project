@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { MyCheckBox } from "./checkBox"
 
 export const PropsAndState = ({ yourName, myCohort }) => {
   let [countClicks, setCountClicks] = useState(0)
@@ -13,7 +14,8 @@ export const PropsAndState = ({ yourName, myCohort }) => {
     <>
       <h3>Welcome, {yourName} proud member of NSS {myCohort}</h3>
       <p>{countClicks}</p>
-      <button onClick={(handleClick)}>Click Me!</button>
+      <button onClick={(handleClick)}>Click Me!</button><br/>
+      <MyCheckBox />
     </>
   )
 }
