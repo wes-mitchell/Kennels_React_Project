@@ -11,3 +11,8 @@ export const deleteEmployees = id => {
   })
   .then(res => res.json())
 }
+
+export const getEmployeeById = (id) => { 
+  return fetch(`${remoteURL}/employees/${id}?_expand=location`)
+  .then(res => res.json())
+ }

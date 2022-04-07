@@ -19,6 +19,9 @@ export const LocationDetail = () => {
 
   return (
     <section className="location">
+      <picture>
+        <img src={location.image} alt="vet storefront" className="locationPhoto"/>
+      </picture>
     <h3 className="location__name">{location.name}</h3>
     <div className="location__address">{location.address}</div>
     </section>
