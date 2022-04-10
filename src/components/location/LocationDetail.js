@@ -1,13 +1,23 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./LocationDetail.css"
 import { getLocationById } from "../../modules/LocationsManager";
+import { deleteLocation } from "../../modules/LocationsManager";
 
 export const LocationDetail = () => { 
   const [location, setLocation] = useState({ name: "", address: "" })
+  const [isLoading, setIsLoading] = useState(true)
 
   const {locationId} = useParams()
+  const navigate = useNavigate()
+
+  const handleDelete = () => { 
+    setIsLoading(true)
+    deleteLocation(locationId).then(() => {
+      navigate("/locations")
+    })
+   }
 
   useEffect(() => {
     console.log('locationId', locationId);
@@ -15,6 +25,7 @@ export const LocationDetail = () => {
     .then(location => {
       setLocation(location);
     });
+    setIsLoading(false)
   }, [locationId])
 
   return (
@@ -24,6 +35,7 @@ export const LocationDetail = () => {
       </picture>
     <h3 className="location__name">{location.name}</h3>
     <div className="location__address">{location.address}</div>
+    <button type="button" onClick={handleDelete} disabled={isLoading}>See Ya</button>
     </section>
   )
 }

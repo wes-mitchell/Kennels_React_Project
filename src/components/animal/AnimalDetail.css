@@ -4,7 +4,11 @@
 }
 
 .dogPhoto {
-  width: 75%;
-  height: 25%;
-  justify-content: center;
+  width: 45%;
+  height: 15%;
+}
+
+button:disabled,
+button:disabled:hover {
+  background-color: lightgray;
 }
