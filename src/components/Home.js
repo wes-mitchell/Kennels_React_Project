@@ -1,7 +1,21 @@
-import React from "react";
-import { PropsAndState } from './PropsAndState'
+import React, { useState, useEffect } from "react";
+import { AnimalSpotlight } from "../components/animal/AnimalSpotlight"
+import { getRandomId } from "../modules/AnimalManager"
+import { PropsAndState } from "./PropsAndState";
 
-export const Home = () => (
+export const Home = () => {
+
+    const [spotlightId, setSpotlightId] = useState(0)
+
+    const refreshSpotlightAnimal = () => {
+        getRandomId().then(setSpotlightId)
+    }
+
+    useEffect(() => {
+        refreshSpotlightAnimal()
+    }, [])
+
+    return (
     <>
         <h2>Nashville Kennels</h2>
         <small>Loving care when you're not there.</small>
@@ -11,5 +25,10 @@ export const Home = () => (
             <div>500 Puppy Way</div>
         </address>
         <PropsAndState yourName={"Wes"} />
+        <button onClick={refreshSpotlightAnimal}>Reload &#x27f3;</button>
+      {
+        spotlightId && <AnimalSpotlight animalId={spotlightId} />
+      }
     </>
-)
+    )
+}
