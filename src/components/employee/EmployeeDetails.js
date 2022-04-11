@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getEmployeeById } from "../../modules/EmployeesManager";
 import './EmployeeDetails.css';
 import { deleteEmployees } from "../../modules/EmployeesManager";
+import { Link } from "react-router-dom";
 
 export const EmployeeDetails = () => { 
   const [employee, setEmployee] = useState({name: ''})

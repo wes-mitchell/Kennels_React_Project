@@ -27,3 +27,23 @@ export const deleteAnimal = (id) => {
      body: JSON.stringify(newAnimal)
    }).then(response => response.json())
 }
+
+export const updateAnimal = (editedAnimal) => { 
+  return fetch(`${remoteURL}/animals/${editedAnimal.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(editedAnimal)
+  }).then(data => data.json())
+ }
+
+ export const getRandomId = () => { 
+   return fetch(`${remoteURL}/animals`)
+   .then(res => res.json())
+   .then(animals => {
+     const randomIndex = Math.floor(Math.random() * animals.length);
+     const randomAnimal = animals[randomIndex]
+     return randomAnimal.id
+   })
+  }
