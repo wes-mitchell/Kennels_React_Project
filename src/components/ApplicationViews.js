@@ -20,7 +20,7 @@ import { Register } from "./auth/Register"
 import { AnimalEditForm } from "./animal/AnimalEditForm"
 import { CustomerEditForm } from "./customer/CustomerEditForm"
 import { EmployeeEditForm } from "./employee/EmployeeEditForm"
-
+import { LocationEditForm } from "./location/LocationEditForm"
 
 
  
@@ -59,7 +59,9 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
                                                     </PrivateRoute>} />
                 <Route path="/locations/:locationId" element={<LocationDetail />} />
                 <Route path="/locations/create" element={<LocationForm />} />
-
+                <Route path ="/locations/:locationId/edit" element={<PrivateRoute>
+                                                                <LocationEditForm />
+                                                                </PrivateRoute> } />
                 {/* Render the customer list when http://localhost:3000/customers */}
                 <Route path="/customers" element={<PrivateRoute>
                                                     <CustomerList />
